@@ -364,37 +364,115 @@
 
   </div>
 
-  <!-- ☕ Buy Me a Coffee floating button -->
-<a href="https://buymeacoffee.com/focusflowpro" target="_blank" id="bmcBtn" style="
+  <!-- 💰 UPI Payment Button -->
+<div id="upiBtn" style="
   position: fixed;
   bottom: 80px;
   right: 16px;
-  background: #FFDD00;
-  color: #000;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  padding: 10px 16px;
-  border-radius: 24px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 20px rgba(255,221,0,0.3);
   z-index: 999;
-  transition: transform 0.2s, box-shadow 0.2s;
-  animation: bmcPop 0.4s ease;
-" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 24px rgba(255,221,0,0.5)'"
-   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(255,221,0,0.3)'">
-  ☕ Support FocusFlow
-</a>
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+">
+  <!-- Main button -->
+  <button onclick="toggleUPI()" style="
+    background: #5f2eea;
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 16px;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 20px rgba(95,46,234,0.4);
+    animation: bmcPop 0.4s ease;
+  ">💜 Support via UPI</button>
+
+  <!-- UPI popup card -->
+  <div id="upiCard" style="
+    display: none;
+    background: #0f0f18;
+    border: 1px solid #5f2eea;
+    border-radius: 12px;
+    padding: 16px;
+    width: 220px;
+    box-shadow: 0 8px 32px rgba(95,46,234,0.3);
+    animation: bmcPop 0.3s ease;
+  ">
+    <div style="font-size: 10px; color: #888; letter-spacing: 2px; margin-bottom: 10px;">SUPPORT FOCUSFLOW</div>
+    <div style="font-size: 12px; color: #e2e8f0; margin-bottom: 12px; letter-spacing: 0.5px;">Pay any amount directly to my UPI 🙏</div>
+
+    <!-- UPI ID box -->
+    <div style="
+      background: #1a1a24;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #a78bfa;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    ">
+      <span>7583944061@ybl</span>
+      <button onclick="copyUPI()" style="
+        background: none; border: none; color: #5f2eea;
+        cursor: pointer; font-size: 14px;
+      ">📋</button>
+    </div>
+
+    <!-- Open in apps -->
+    <div style="font-size: 9px; color: #555; letter-spacing: 1px; margin-bottom: 8px;">OPEN IN</div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <a href="phonepe://pay?pa=7583944061@ybl&pn=FocusFlow&cu=INR" style="
+        background: #5f259f; color: #fff; padding: 6px 12px;
+        border-radius: 20px; font-size: 10px; text-decoration: none;
+        letter-spacing: 0.5px;
+      ">PhonePe</a>
+      <a href="gpay://upi/pay?pa=7583944061@ybl&pn=FocusFlow&cu=INR" style="
+        background: #1a73e8; color: #fff; padding: 6px 12px;
+        border-radius: 20px; font-size: 10px; text-decoration: none;
+        letter-spacing: 0.5px;
+      ">GPay</a>
+      <a href="upi://pay?pa=7583944061@ybl&pn=FocusFlow&cu=INR" style="
+        background: #ff6b00; color: #fff; padding: 6px 12px;
+        border-radius: 20px; font-size: 10px; text-decoration: none;
+        letter-spacing: 0.5px;
+      ">Any UPI</a>
+    </div>
+
+    <div id="copiedMsg" style="display:none; font-size:10px; color:#4ade80; margin-top:8px; letter-spacing:1px;">✓ UPI ID copied!</div>
+  </div>
+</div>
+
 <style>
   @keyframes bmcPop {
     from { opacity: 0; transform: scale(0.8) translateY(10px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
   }
 </style>
+
+<script>
+  function toggleUPI() {
+    const card = document.getElementById('upiCard');
+    card.style.display = card.style.display === 'none' ? 'block' : 'none';
+  }
+  function copyUPI() {
+    navigator.clipboard.writeText('7583944061@ybl').then(() => {
+      const msg = document.getElementById('copiedMsg');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 2000);
+    });
+  }
+</script>
 
 <!-- Bottom nav -->
   <nav class="nav">
