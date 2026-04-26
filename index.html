@@ -364,7 +364,39 @@
 
   </div>
 
-  <!-- Bottom nav -->
+  <!-- ☕ Buy Me a Coffee floating button -->
+<a href="https://buymeacoffee.com/focusflowpro" target="_blank" id="bmcBtn" style="
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  background: #FFDD00;
+  color: #000;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 10px 16px;
+  border-radius: 24px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 20px rgba(255,221,0,0.3);
+  z-index: 999;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: bmcPop 0.4s ease;
+" onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 24px rgba(255,221,0,0.5)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(255,221,0,0.3)'">
+  ☕ Support FocusFlow
+</a>
+<style>
+  @keyframes bmcPop {
+    from { opacity: 0; transform: scale(0.8) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+</style>
+
+<!-- Bottom nav -->
   <nav class="nav">
     <button class="nav-btn active" id="nav-timer" onclick="switchTab('timer')">
       <span class="icon">⏱</span>TIMER
